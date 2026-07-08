@@ -13,14 +13,14 @@ const Navbar = () => {
 
   // Class helper updated to look perfect on a transparent, dark backdrop
   const navLinkClass = ({ isActive }) =>
-    `inline-block px-2 py-2 transition-colors duration-300 ${
-      isActive ? "text-teal-400 font-semibold" : "text-gray-200 hover:text-teal-400"
-    }`;
+  `inline-block px-2 py-2 transition-colors duration-300 ${
+    isActive ? "text-teal-600 font-bold" : "text-gray-700 hover:text-teal-600"
+  }`;
 
   return (
     <>
       {/* Changed bg-white text-black shadow-md -> bg-transparent text-white */}
-      <div className="fixed top-0 left-0 w-full bg-transparent text-white z-50">
+      <div className="fixed top-0 left-0 w-full bg-white text-gray-800 shadow-md z-50">
         
         {/* Main Navbar container */}
         <div className="max-w-7xl mx-auto px-4 py-3 sm:py-2">
@@ -29,7 +29,7 @@ const Navbar = () => {
             {/* Logo */}
             <div>
               <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                <img src={LogoImg} alt="Logo" className="h-16 object-contain mix-blend-screen" />
+                <img src={LogoImg} alt="Logo" className="h-16 object-contain mix-blend-multiply" />
               </Link>
             </div>
 
@@ -74,13 +74,13 @@ const Navbar = () => {
                 {showMenu ? (
                   <HiMenuAlt1
                     onClick={toggleMenu}
-                    className="cursor-pointer transition-all text-white"
+                    className="cursor-pointer transition-all text-gray-800"
                     size={30}
                   />
                 ) : (
                   <HiMenuAlt3
                     onClick={toggleMenu}
-                    className="cursor-pointer transition-all text-white"
+                    className="cursor-pointer transition-all text-gray-800"
                     size={30}
                   />
                 )}
