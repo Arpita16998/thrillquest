@@ -1,92 +1,109 @@
 import React, { useState } from "react";
-import { FaChevronDown, FaSearch } from "react-icons/fa";
-import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import { HiMapPin, HiSparkles, HiShieldCheck, HiPhone } from "react-icons/hi2";
 
 const Hero = () => {
-  const [destination, setDestination] = useState("");
-  const [category, setCategory] = useState("");
-  const [date, setDate] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log("Searching for:", searchQuery);
+  };
 
   return (
-    <div className="h-full w-full flex flex-col justify-center relative">
-      {/* Hero text section */}
-      <div className="flex-1 flex items-center justify-center px-4">
-        <div className="text-center text-white max-w-3xl">
-          <p className="text-lg md:text-xl font-medium mb-3 tracking-wide">
-            Explore The World With Us
-          </p>
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            Find Your Perfect Journey
-          </h1>
-          <p className="mt-4 text-sm md:text-lg text-white/90">
-            Discover beautiful destinations, plan your dream trip, and travel
-            with unforgettable experiences.
-          </p>
+    <div className="h-full w-full flex flex-col justify-center items-center relative min-h-[600px] px-4">
+      
+      {/* 
+        1. MAIN CENTER STACK: Headline and Thin Search Bar 
+        Grouped together in standard layout flow with a tight gap.
+      */}
+      <div className="text-center text-white max-w-3xl w-full flex flex-col items-center gap-6 md:gap-8 -mt-12">
+        
+        {/* Slogan Tagline */}
+        <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide drop-shadow-md font-sans whitespace-nowrap">
+          not just a travel, it's a Thrill Quest
+        </h1>
+
+        {/* Thin Capsule Search Bar directly underneath */}
+        <div className="w-full max-w-2xl mx-auto">
+          <form onSubmit={handleSearch}>
+            <div className="flex items-center bg-white rounded-full p-1 pl-4 md:pl-6 shadow-2xl border border-black/5 w-full transition-all duration-300 focus-within:ring-4 focus-within:ring-teal-500/10">
+              <FaSearch className="text-gray-400 text-sm md:text-base flex-shrink-0 mr-2.5" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search Destinations..."
+                className="w-full bg-transparent text-gray-800 placeholder-gray-400/90 text-xs md:text-sm font-normal outline-none pr-3 py-1.5 md:py-2"
+              />
+              <button
+                type="submit"
+                className="bg-[#00a896] hover:bg-[#029283] text-white font-bold px-5 md:px-8 py-2 md:py-2.5 rounded-full text-xs md:text-sm tracking-wide transition-all duration-200 active:scale-95 flex-shrink-0"
+              >
+                Search
+              </button>
+            </div>
+          </form>
         </div>
+
       </div>
 
-      {/* bottom search bar */}
-      <div className="absolute bottom-12 left-0 w-full px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      {/* 
+        2. FIXED: Bottom-Anchored Transparent Features Bar 
+        Isolated using absolute positioning so it pins directly to the bottom edge.
+      */}
+      <div className="absolute bottom-4 md:bottom-6 left-0 w-full px-4 z-10">
+        <div className="max-w-5xl w-full mx-auto bg-black/20 border border-white/10 backdrop-blur-md rounded-2xl p-3 md:py-3.5 md:px-6 shadow-xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-3 md:gap-y-0 text-white divide-x-0 md:divide-x divide-white/10">
             
-            {/* Destination */}
-            <div className="relative">
-              <select
-                value={destination}
-                onChange={(e) => setDestination(e.target.value)}
-                className="w-full h-[64px] rounded-2xl border border-white/50 bg-black/35 text-white px-5 pr-12 text-lg outline-none backdrop-blur-sm appearance-none"
-              >
-                <option value="" className="text-black">
-                  Destination
-                </option>
-                <option value="Maldives" className="text-black">Maldives</option>
-                <option value="Malaysia" className="text-black">Malaysia</option>
-                <option value="Vietnam" className="text-black">Vietnam</option>
-                <option value="Sri Lanka" className="text-black">Sri Lanka</option>
-                <option value="Egypt" className="text-black">Egypt</option>
-                <option value="Dubai" className="text-black">Dubai</option>
-              </select>
-              <FaChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-white/80 pointer-events-none" />
+            {/* Handpicked Destinations */}
+            <div className="flex items-center gap-2.5 px-1 md:px-3">
+              <div className="p-2 rounded-full bg-amber-500/20 text-amber-400 flex-shrink-0">
+                <HiMapPin size={18} />
+              </div>
+              <div className="text-left">
+                <h4 className="text-[11px] md:text-xs font-semibold tracking-wide">Handpicked Destinations</h4>
+                <p className="text-[9px] md:text-[11px] text-white/60">Carefully selected for you</p>
+              </div>
             </div>
 
-            {/* Category */}
-            <div className="relative">
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full h-[64px] rounded-2xl border border-white/50 bg-black/35 text-white px-5 pr-12 text-lg outline-none backdrop-blur-sm appearance-none"
-              >
-                <option value="" className="text-black">
-                  Category
-                </option>
-                <option value="Adventure" className="text-black">Adventure</option>
-                <option value="Beach" className="text-black">Beach</option>
-                <option value="Honeymoon" className="text-black">Honeymoon</option>
-                <option value="Family Tour" className="text-black">Family Tour</option>
-                <option value="Luxury" className="text-black">Luxury</option>
-              </select>
-              <FaChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-white/80 pointer-events-none" />
+            {/* Unforgettable Experiences */}
+            <div className="flex items-center gap-2.5 px-1 md:px-4">
+              <div className="p-2 rounded-full bg-emerald-500/20 text-emerald-400 flex-shrink-0">
+                <HiSparkles size={18} />
+              </div>
+              <div className="text-left">
+                <h4 className="text-[11px] md:text-xs font-semibold tracking-wide">Unforgettable Experiences</h4>
+                <p className="text-[9px] md:text-[11px] text-white/60">Moments that last forever</p>
+              </div>
             </div>
 
-            {/* Date */}
-            <div className="relative">
-              <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                className="w-full h-[64px] rounded-2xl border border-white/50 bg-black/35 text-white px-5 pr-12 text-lg outline-none backdrop-blur-sm"
-              />
-              <FaRegCalendarAlt className="absolute right-5 top-1/2 -translate-y-1/2 text-white/80 pointer-events-none" />
+            {/* Safe & Reliable */}
+            <div className="flex items-center gap-2.5 px-1 md:px-4">
+              <div className="p-2 rounded-full bg-blue-500/20 text-blue-400 flex-shrink-0">
+                <HiShieldCheck size={18} />
+              </div>
+              <div className="text-left">
+                <h4 className="text-[11px] md:text-xs font-semibold tracking-wide">Safe & Reliable</h4>
+                <p className="text-[9px] md:text-[11px] text-white/60">Your safety is our priority</p>
+              </div>
             </div>
 
-            {/* Search button */}
-            <button className="w-full h-[64px] rounded-2xl bg-[#f6a313] hover:bg-[#e39a10] text-black font-semibold text-xl flex items-center justify-center gap-3 transition">
-              Search <FaSearch />
-            </button>
+            {/* 24/7 Support */}
+            <div className="flex items-center gap-2.5 px-1 md:px-4">
+              <div className="p-2 rounded-full bg-purple-500/20 text-purple-400 flex-shrink-0">
+                <HiPhone size={18} />
+              </div>
+              <div className="text-left">
+                <h4 className="text-[11px] md:text-xs font-semibold tracking-wide">24/7 Support</h4>
+                <p className="text-[9px] md:text-[11px] text-white/60">We are here to help anytime</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+
     </div>
   );
 };
