@@ -28,9 +28,9 @@ const Navbar = () => {
               <HiPhone size={16} />
               <span>+91 9239337204</span>
             </a>
-            <a href="mailto:info@thrillquest.com" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
+            <a href="mailto:inquiries@thrillquest.com" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
               <HiMail size={16} />
-              <span>info@thrillquest.com</span>
+              <span>inquiries@thrillquest.com</span>
             </a>
           </div>
         </div>
