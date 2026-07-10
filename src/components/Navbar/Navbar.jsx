@@ -23,13 +23,14 @@ const Navbar = () => {
       <div className="fixed top-0 left-0 w-full bg-white text-gray-800 shadow-md z-50">
         
         {/* Main Navbar container */}
-        <div className="max-w-7xl mx-auto px-4 py-3 sm:py-2">
+        {/* REDUCED PADDING HERE: Changed py-3 to py-0 to force a slim layout */}
+        <div className="max-w-7xl mx-auto px-4 py-0 sm:py-2">
           <div className="flex items-center justify-between w-full">
             
             {/* Logo */}
             <div>
               <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                <img src={LogoImg} alt="ThrillQuestLogo" className="h-24 object-contain mix-blend-multiply" />
+                <img src={LogoImg} alt="ThrillQuestLogo" className="h-28 object-contain mix-blend-multiply" />
               </Link>
             </div>
 
