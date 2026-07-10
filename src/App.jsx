@@ -9,6 +9,7 @@ import NoPage from "./pages/Nopage";
 import Service from "./pages/Service";
 import India_Tour from "./pages/India_Tour";
 import International_Tour from "./pages/International_Tour";
+// Make sure the path matches your folder structure exactly!
 
 const App = () => {
   return (
