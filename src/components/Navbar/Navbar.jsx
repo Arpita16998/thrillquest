@@ -25,9 +25,9 @@ const Navbar = () => {
         <div className="w-full bg-[#005c4b] text-white text-xs sm:text-sm py-2">
           <div className="max-w-7xl mx-auto px-4 flex justify-end items-center gap-6">
             {/* Phone Number Link */}
-            <a href="tel:+917407903965" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
+            <a href="tel:+919239337204" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
               <HiPhone size={16} />
-              <span>+91 7407903965</span>
+              <span>+91 9239337204</span>
             </a>
             {/* Email Link */}
             <a href="mailto:inquiries@mythrillquest.com" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
