@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import LogoImg from "../../assets/images/thrill-logo.png";
-import { HiMenuAlt3, HiMenuAlt1, HiPhone, HiMail } from "react-icons/hi"; // Added contact icons
+import { HiMenuAlt3, HiMenuAlt1, HiPhone, HiMail } from "react-icons/hi";
 import ResponsiveMenu from "./ResponsiveMenu";
 
 const Navbar = () => {
@@ -21,79 +21,74 @@ const Navbar = () => {
       {/* Main Fixed Header Container */}
       <div className="fixed top-0 left-0 w-full shadow-md z-50 flex flex-col">
         
-        {/* 1. TOP CONTACT BAR (Matches JourneyTank Style) */}
+        {/* 1. TOP CONTACT BAR */}
         <div className="w-full bg-[#005c4b] text-white text-xs sm:text-sm py-2">
           <div className="max-w-7xl mx-auto px-4 flex justify-end items-center gap-6">
-            {/* Phone Number Link */}
             <a href="tel:+919239337204" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
               <HiPhone size={16} />
               <span>+91 9239337204</span>
             </a>
-            {/* Email Link */}
-            <a href="mailto:inquiries@mythrillquest.com" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
+            <a href="mailto:info@thrillquest.com" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
               <HiMail size={16} />
-              <span>inquiries@mythrillquest.com</span>
+              <span>info@thrillquest.com</span>
             </a>
           </div>
         </div>
 
-        {/* 2. MAIN NAVBAR BAR (White background) */}
+        {/* 2. MAIN NAVBAR BAR */}
         <div className="w-full bg-white text-gray-800">
           <div className="max-w-7xl mx-auto px-4">
-            {/* 
-              FIX: Height locked to exactly h-20 (80px) on desktop to accommodate 
-              the bigger logo smoothly without leaking any extra white space below!
-            */}
             <div className="flex items-center justify-between w-full h-16 md:h-20">
               
-              {/* Logo Area */}
-              <div className="flex items-center h-full py-2">
+              {/* Logo Area (Stays pinned perfectly to the left) */}
+              <div className="flex items-center h-full">
                 <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center h-full">
-                  {/* 
-                    FIX: Set to h-12 on mobile and h-16 on desktop. 
-                    This makes the logo big, highly readable, and cleanly contained.
-                  */}
                   <img 
                     src={LogoImg} 
                     alt="ThrillQuestLogo" 
-                    className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" 
+                    className="h-12 md:h-14 w-auto object-contain mix-blend-multiply transform scale-[1.65] origin-left transition-transform duration-200" 
                   />
                 </Link>
               </div>
 
-              {/* Desktop Navlinks */}
-              <div className="hidden md:block">
-                <ul className="flex items-center gap-8">
-                  <li>
-                    <NavLink to="/" className={navLinkClass}>
-                      Home
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/about" className={navLinkClass}>
-                      About Us
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/India_Tour" className={navLinkClass}>
-                      India Tour
-                  </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/International_Tour" className={navLinkClass}>
-                      International Tour
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/contact" className={navLinkClass}>
-                      Contact Us
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
+              {/* 
+                FIX: Grouped the Desktop Navlinks and Mobile Layout together 
+                inside this container so everything automatically flushes right!
+              */}
+              <div className="flex items-center justify-end">
+                
+                {/* Desktop Navlinks */}
+                <div className="hidden md:block">
+                  <ul className="flex items-center gap-6 lg:gap-8">
+                    <li>
+                      <NavLink to="/" className={navLinkClass}>
+                        Home
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/about" className={navLinkClass}>
+                        About Us
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/India_Tour" className={navLinkClass}>
+                        India Tour
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/International_Tour" className={navLinkClass}>
+                        International Tour
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/contact" className={navLinkClass}>
+                        Contact Us
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
 
-              {/* Mobile Hamburger Layout */}
-              <div className="flex items-center gap-4">
+                {/* Mobile Hamburger Layout */}
                 <div className="md:hidden block">
                   {showMenu ? (
                     <HiMenuAlt1
@@ -109,7 +104,8 @@ const Navbar = () => {
                     />
                   )}
                 </div>
-              </div>
+
+              </div> {/* End of Right Aligned Group */}
 
             </div>
           </div>
