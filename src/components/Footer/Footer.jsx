@@ -41,7 +41,7 @@ const Footer = () => {
               Our Services
             </h3>
             <ul className="flex flex-col gap-2.5 text-sm text-white/70">
-              {["Domestic Tours", "International Tours", "Customized Holidays", "Honeymoon Packages", "Group Tours", "Family Vacations", "Flight Bookings", "Hotel Bookings", "Visa Assistance"].map((service) => (
+              {["Domestic Tours", "International Tours", "Customized Holidays", "Honeymoon Packages", "Group Tours", "Family Vacations", "Flight Bookings", "Hotel Bookings", "Visa Assistance", "Travel Insurance"].map((service) => (
                 <li key={service} className="hover:text-white hover:translate-x-0.5 transition-all duration-200 cursor-pointer">
                   {service}
                 </li>
