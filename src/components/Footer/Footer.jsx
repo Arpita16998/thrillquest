@@ -98,14 +98,33 @@ const Footer = () => {
               Social
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-white/70">
-              <li className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer">
-                <FaFacebookF size={14} className="text-white/80 w-4 text-left" />
-                <span>Facebook</span>
+              
+              {/* 👤 Interactive Facebook Link */}
+              <li>
+                <a 
+                  href="https://www.facebook.com/profile.php?id=61572555554884" // 👈 REPLACE WITH YOUR REAL FACEBOOK URL
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer"
+                >
+                  <FaFacebookF size={14} className="text-white/80 w-4 text-left" />
+                  <span>Facebook</span>
+                </a>
               </li>
-              <li className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer">
-                <FaInstagram size={15} className="text-white/80 w-4 text-left" />
-                <span>Instagram</span>
+
+              {/* 📸 Interactive Instagram Link */}
+              <li>
+                <a 
+                  href="https://www.instagram.com/thrillquest_official/" // 👈 REPLACE WITH YOUR REAL INSTAGRAM URL
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer"
+                >
+                  <FaInstagram size={15} className="text-white/80 w-4 text-left" />
+                  <span>Instagram</span>
+                </a>
               </li>
+
             </ul>
           </div>
 
@@ -115,7 +134,7 @@ const Footer = () => {
         <div className="w-full text-xs text-white/40 pt-4 mt-2 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           
           {/* Copyright Information */}
-          <div className="text-center sm:text-left order-2 sm:order-1 pt-2sm:pt-0">
+          <div className="text-center sm:text-left order-2 sm:order-1 pt-2 sm:pt-0">
             <p>© 2026 <span className="font-bold text-white/60">Thrill Quest</span>. All Rights Reserved.</p>
           </div>
 

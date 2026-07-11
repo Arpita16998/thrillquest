@@ -24,14 +24,31 @@ const Navbar = () => {
         {/* 1. TOP CONTACT BAR */}
         <div className="w-full bg-[#005c4b] text-white text-xs sm:text-sm py-2">
           <div className="max-w-7xl mx-auto px-4 flex justify-end items-center gap-6">
-            <a href="tel:+919239337204" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
-              <HiPhone size={16} />
-              <span>+91 9239337204</span>
+            
+            {/* 📞 Clickable Phone Link with Micro-Interactions */}
+            <a 
+              href="tel:+919239337204" 
+              className="flex items-center gap-2 text-white/90 hover:text-white transition-colors duration-200 group"
+            >
+              <HiPhone 
+                size={16} 
+                className="text-white/80 group-hover:scale-110 transition-transform duration-200" 
+              />
+              <span className="hover:underline underline-offset-4">+91 9239337204</span>
             </a>
-            <a href="mailto:inquiries@thrillquest.com" className="flex items-center gap-2 hover:text-teal-200 transition-colors">
-              <HiMail size={16} />
-              <span>inquiries@thrillquest.com</span>
+
+            {/* ✉️ Clickable Email Link with Micro-Interactions */}
+            <a 
+              href="mailto:inquiries@thrillquest.com" 
+              className="flex items-center gap-2 text-white/90 hover:text-white transition-colors duration-200 group"
+            >
+              <HiMail 
+                size={16} 
+                className="text-white/80 group-hover:scale-110 transition-transform duration-200" 
+              />
+              <span className="hover:underline underline-offset-4">inquiries@thrillquest.com</span>
             </a>
+
           </div>
         </div>
 
@@ -51,10 +68,7 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              {/* 
-                FIX: Grouped the Desktop Navlinks and Mobile Layout together 
-                inside this container so everything automatically flushes right!
-              */}
+              {/* Grouped Desktop Links & Mobile Toggle Action Container */}
               <div className="flex items-center justify-end">
                 
                 {/* Desktop Navlinks */}
@@ -105,7 +119,7 @@ const Navbar = () => {
                   )}
                 </div>
 
-              </div> {/* End of Right Aligned Group */}
+              </div>
 
             </div>
           </div>
