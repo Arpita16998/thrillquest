@@ -299,7 +299,7 @@ const Contact = () => {
             </div>
             <div className="space-y-1">
               <h4 className="text-base font-bold text-slate-900">Digital Dispatch</h4>
-              <p className="text-sm text-slate-600 font-semibold">inquiries@thrillquest.com</p>
+              <p className="text-sm text-slate-600 font-semibold">inquiries@mythrillquest.com</p>
               <p className="text-xs text-slate-400">Custom business inquiries within 12 hours</p>
             </div>
           </div>
