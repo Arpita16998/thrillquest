@@ -39,14 +39,14 @@ const Navbar = () => {
 
             {/* ✉️ Clickable Email Link with Micro-Interactions */}
             <a 
-              href="mailto:inquiries@thrillquest.com" 
+              href="mailto:inquiries@mythrillquest.com" 
               className="flex items-center gap-2 text-white/90 hover:text-white transition-colors duration-200 group"
             >
               <HiMail 
                 size={16} 
                 className="text-white/80 group-hover:scale-110 transition-transform duration-200" 
               />
-              <span className="hover:underline underline-offset-4">inquiries@thrillquest.com</span>
+              <span className="hover:underline underline-offset-4">inquiries@mythrillquest.com</span>
             </a>
 
           </div>

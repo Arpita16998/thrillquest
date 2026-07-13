@@ -99,7 +99,7 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://formsubmit.co/ajax/inquiries@thrillquest.com", {
+      const response = await fetch("https://formsubmit.co/ajax/inquiries@mythrillquest.com", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -117,7 +117,7 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert("Thank you! Your information has been verified and successfully sent to inquiries@thrillquest.com.");
+        alert("Thank you! Your information has been verified and successfully sent to inquiries@mythrillquest.com.");
         setFormData({
           fullName: "",
           email: "",

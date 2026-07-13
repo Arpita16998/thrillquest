@@ -71,8 +71,8 @@ const Footer = () => {
             <ul className="flex flex-col gap-4 text-sm text-white/70">
               <li className="flex items-start gap-2">
                 <HiEnvelope className="mt-0.5 shrink-0 text-white/80" size={16} />
-                <a href="mailto:inquiries@thrillquest.com" className="hover:text-white break-all">
-                  inquiries@thrillquest.com
+                <a href="mailto:inquiries@mythrillquest.com" className="hover:text-white break-all">
+                  inquiries@mythrillquest.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
