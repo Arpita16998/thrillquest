@@ -11,10 +11,12 @@ const Hero = () => {
   };
 
   return (
-    <div className="h-full w-full flex flex-col justify-center items-center relative min-h-[600px] px-4">
+    /* 🌟 COMPACT VERTICAL LENGTH: Reduced from min-h-[380px] down to min-h-[340px] */
+    <div className="h-full w-full flex flex-col justify-center items-center relative min-h-[340px] px-4">
       
-      {/* 1. MAIN CENTER STACK: New Tagline and Thin Search Bar */}
-      <div className="text-center text-white max-w-4xl w-full flex flex-col items-center gap-6 md:gap-8 -mt-12">
+      {/* 1. MAIN CENTER STACK: Tagline and Thin Search Bar */}
+      {/* 🌟 SHIFTED UP: Increased negative margin to -mt-20 (mobile) and md:-mt-24 (desktop) to lift it higher */}
+      <div className="text-center text-white max-w-4xl w-full flex flex-col items-center gap-5 md:gap-6 -mt-20 md:-mt-24">
         
         {/* Slogan text using your requested 'Agrandir' font */}
         <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide drop-shadow-md font-['Agrandir'] whitespace-nowrap text-white">
@@ -46,7 +48,7 @@ const Hero = () => {
       </div>
 
       {/* 2. Bottom-Anchored Transparent Features Bar */}
-      <div className="absolute bottom-4 md:bottom-6 left-0 w-full px-4 z-10">
+      <div className="absolute bottom-4 md:bottom-5 left-0 w-full px-4 z-10">
         <div className="max-w-5xl w-full mx-auto bg-black/20 border border-white/10 backdrop-blur-md rounded-2xl p-3 md:py-3.5 md:px-6 shadow-xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-3 md:gap-y-0 text-white divide-x-0 md:divide-x divide-white/10">
             
