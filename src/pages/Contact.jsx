@@ -12,8 +12,6 @@ const Contact = () => {
     dreamTrip: ""
   });
 
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -23,13 +21,6 @@ const Contact = () => {
     e.preventDefault();
     console.log("Thril Quest Form Submitted:", formData);
     alert("Thank you! A Thril Quest holiday planner will reach out with a custom itinerary within 24 hours.");
-  };
-
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    console.log("Newsletter Subscribed:", newsletterEmail);
-    alert("Subscribed! Welcome to Thril Quest dispatch.");
-    setNewsletterEmail("");
   };
 
   return (
@@ -54,164 +45,106 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* 2. LOGO PLACEHOLDER BAR */}
-      <div className="border-b border-slate-100 bg-slate-50/50 py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-8 opacity-40 grayscale select-none">
-          <span className="font-serif font-black tracking-widest text-lg">THRIL QUEST EXPEDITIONS</span>
-          <span className="font-sans font-bold tracking-widest text-lg">GLOBAL OUTPOSTS</span>
-          <span className="font-mono font-bold tracking-widest text-lg">BESPOKE LUXURY</span>
-          <span className="font-sans font-black tracking-widest text-lg">WILDTRACKS</span>
-        </div>
-      </div>
+      {/* 2. MAIN INTERACTIVE FORM AREA */}
+      <section className="max-w-4xl mx-auto px-6 py-16">
+        <div className="space-y-8">
+          <div className="space-y-3 text-center md:text-left">
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+              Plan Your Next Epic Journey
+            </h2>
+            <p className="text-slate-500 text-sm max-w-xl font-normal leading-relaxed">
+              Share a few details and a Thril Quest planner will craft a draft itinerary, tailored to your dates, pace and budget. Replies within 24 hours.
+            </p>
+          </div>
 
-      {/* 3. MAIN SPLIT INTERACTIVE AREA */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
-          {/* LEFT CHASSIS: Form */}
-          <div className="lg:col-span-8 space-y-8">
-            <div className="space-y-3">
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight">
-                Plan Your Next Epic Journey
-              </h2>
-              <p className="text-slate-500 text-sm max-w-xl font-normal leading-relaxed">
-                Share a few details and a Thril Quest planner will craft a draft itinerary, tailored to your dates, pace and budget. Replies within 24 hours.
-              </p>
-            </div>
-
-            <form onSubmit={handleFormSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Full Name *</label>
-                  <input 
-                    type="text" name="fullName" required placeholder="Your name"
-                    value={formData.fullName} onChange={handleInputChange}
-                    className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Email *</label>
-                  <input 
-                    type="email" name="email" required placeholder="you@email.com"
-                    value={formData.email} onChange={handleInputChange}
-                    className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Phone *</label>
-                  <input 
-                    type="text" name="phone" required placeholder="+91 9239337204"
-                    value={formData.phone} onChange={handleInputChange}
-                    className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Destination *</label>
-                  <select 
-                    name="destination" required value={formData.destination} onChange={handleInputChange}
-                    className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-700 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="" disabled>Select destination</option>
-                    <option value="Ladakh">Ladakh (India)</option>
-                    <option value="Kashmir">Kashmir (India)</option>
-                    <option value="Andaman">Andaman (India)</option>
-                    <option value="North East India">North East India (India)</option>
-                    <option value="Sri Lanka">Sri Lanka (International)</option>
-                    <option value="Bali">Bali (International)</option>
-                    <option value="Dubai">Dubai (International)</option>
-                    <option value="Thailand">Thailand (International)</option>
-                  </select>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Approx. Travel Date</label>
-                  <input 
-                    type="date" name="travelDate" value={formData.travelDate} onChange={handleInputChange}
-                    className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-700 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Travelers</label>
-                  <input 
-                    type="number" name="travelers" min="1" value={formData.travelers} onChange={handleInputChange}
-                    className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
-                  />
-                </div>
-
-              </div>
-
+          <form onSubmit={handleFormSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
               <div className="space-y-1.5">
-                <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Tell us about your dream trip</label>
-                <textarea 
-                  name="dreamTrip" rows="4" placeholder="Pace, budget, occasion, must-haves..."
-                  value={formData.dreamTrip} onChange={handleInputChange}
-                  className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all resize-none"
+                <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Full Name *</label>
+                <input 
+                  type="text" name="fullName" required placeholder="Your name"
+                  value={formData.fullName} onChange={handleInputChange}
+                  className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
                 />
               </div>
 
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Email *</label>
+                <input 
+                  type="email" name="email" required placeholder="you@email.com"
+                  value={formData.email} onChange={handleInputChange}
+                  className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Phone *</label>
+                <input 
+                  type="text" name="phone" required placeholder="+91 9239337204"
+                  value={formData.phone} onChange={handleInputChange}
+                  className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Destination *</label>
+                <select 
+                  name="destination" required value={formData.destination} onChange={handleInputChange}
+                  className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-700 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all appearance-none cursor-pointer"
+                >
+                  <option value="" disabled>Select destination</option>
+                  <option value="Ladakh">Ladakh (India)</option>
+                  <option value="Kashmir">Kashmir (India)</option>
+                  <option value="Andaman">Andaman (India)</option>
+                  <option value="North East India">North East India (India)</option>
+                  <option value="Sri Lanka">Sri Lanka (International)</option>
+                  <option value="Bali">Bali (International)</option>
+                  <option value="Dubai">Dubai (International)</option>
+                  <option value="Thailand">Thailand (International)</option>
+                </select>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Approx. Travel Date</label>
+                <input 
+                  type="date" name="travelDate" value={formData.travelDate} onChange={handleInputChange}
+                  className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-700 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Travelers</label>
+                <input 
+                  type="number" name="travelers" min="1" value={formData.travelers} onChange={handleInputChange}
+                  className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all"
+                />
+              </div>
+
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Tell us about your dream trip</label>
+              <textarea 
+                name="dreamTrip" rows="4" placeholder="Pace, budget, occasion, must-haves..."
+                value={formData.dreamTrip} onChange={handleInputChange}
+                className="w-full bg-slate-50 border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-[#7fa0a0] focus:bg-white transition-all resize-none"
+              />
+            </div>
+
+            <div className="text-center md:text-left">
               <button 
                 type="submit"
                 className="bg-[#6b8c8c] hover:bg-[#587575] text-white font-bold tracking-wide text-xs uppercase px-10 py-4 rounded-full transition-colors shadow-md active:scale-95"
               >
                 Submit Request
               </button>
-            </form>
-          </div>
-
-          {/* RIGHT CHASSIS: Info & Newsletter */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="bg-[#6b8c8c] text-white rounded-[2rem] p-8 space-y-6 shadow-xl">
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold tracking-tight">Our Newsletters</h3>
-                <p className="text-teal-50/80 text-xs leading-relaxed font-light">
-                  Get raw route dispatches, early-bird off-grid access clearances, and customized itinerary inspirations sent directly to your inbox.
-                </p>
-              </div>
-
-              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-                <input 
-                  type="email" required placeholder="Enter your email address"
-                  value={newsletterEmail} onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 text-xs placeholder-slate-400 focus:outline-none"
-                />
-                <button 
-                  type="submit"
-                  className="w-full bg-slate-900 hover:bg-slate-950 text-white font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition-colors"
-                >
-                  Subscribe Now
-                </button>
-              </form>
             </div>
-
-            <div className="bg-slate-50 border border-slate-100 rounded-[2rem] p-8 grid grid-cols-2 gap-x-4 gap-y-6">
-              <div className="space-y-0.5">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">NO-PRESSURE QUOTE</span>
-                <span className="text-base font-black text-slate-900">Free of cost</span>
-              </div>
-              <div className="space-y-0.5">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">ON-TRIP SUPPORT</span>
-                <span className="text-base font-black text-slate-900">24 / 7 Helpdesk</span>
-              </div>
-              <div className="space-y-0.5">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">CUSTOM ITINERARIES</span>
-                <span className="text-base font-black text-slate-900">100% Tailored</span>
-              </div>
-              <div className="space-y-0.5">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">TRUSTED BY</span>
-                <span className="text-base font-black text-slate-900">4,200+ Travelers</span>
-              </div>
-            </div>
-          </div>
-
+          </form>
         </div>
       </section>
 
-      {/* 4. THREE INFORMATIONAL CARDS */}
+      {/* 3. THREE INFORMATIONAL CARDS */}
       <section className="max-w-7xl mx-auto px-6 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
@@ -252,7 +185,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* 5. FULL WIDTH GEOGRAPHIC MAP COMPONENT */}
+      {/* 4. FULL WIDTH GEOGRAPHIC MAP COMPONENT */}
       <section className="w-full px-6 pb-16 max-w-7xl mx-auto">
         <div className="w-full h-96 rounded-[2rem] overflow-hidden shadow-inner border border-slate-200/60 relative">
           <iframe 
