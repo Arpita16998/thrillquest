@@ -85,8 +85,8 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/India_Tour" className={navLinkClass}>
-                        India Tour
+                      <NavLink to="/Domestic_Tour" className={navLinkClass}>
+                        Domestic Tour
                       </NavLink>
                     </li>
                     <li>

@@ -7,7 +7,7 @@ import Contact from "./pages/Contact";
 import PlacesRoute from "./pages/placesRoute";
 import NoPage from "./pages/Nopage";
 import Service from "./pages/Service";
-import India_Tour from "./pages/India_Tour";
+import Domestic_Tour from "./pages/Domestic_Tour";
 import International_Tour from "./pages/International_Tour";
 // Make sure the path matches your folder structure exactly!
 
@@ -23,7 +23,7 @@ const App = () => {
             <Route path="places" element={<PlacesRoute />} />
             <Route path="*" element={<NoPage />} />
             <Route path="service" element={<Service />} />
-            <Route path="India_tour" element={<India_Tour />} />
+            <Route path="Domestic_tour" element={<Domestic_Tour />} />
             <Route path="International_tour" element={<International_Tour />} />
           </Route>
         </Routes>

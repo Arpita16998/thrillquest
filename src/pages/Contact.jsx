@@ -54,7 +54,7 @@ const Contact = () => {
         // Counts words by splitting on spaces and filtering out empty elements
         const wordCount = value.trim().split(/\s+/).filter(Boolean).length;
         if (wordCount < 20) {
-          errorMsg = `Please describe your trip using a minimum of 20 words. (Current word count: ${wordCount}/20)`;
+          errorMsg = `Please provide your details with a minimum of 20 words. (Current word count: ${wordCount}/20)`;
         }
         break;
       }
@@ -99,7 +99,7 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://formsubmit.co/ajax/inquiries@mythrillquest.com", {
+      const response = await fetch("https://formsubmit.co/ajax/inquiries@thrillquest.com", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -117,7 +117,7 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert("Thank you! Your information has been verified and successfully sent to inquiries@mythrillquest.com.");
+        alert("Thank you! Your information has been verified and successfully sent to inquiries@thrillquest.com.");
         setFormData({
           fullName: "",
           email: "",
@@ -253,11 +253,30 @@ const Contact = () => {
 
             </div>
 
-            {/* Dream Trip Description Textarea */}
-            <div className="space-y-1.5">
-              <label className="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Tell us about your dream trip *</label>
+            {/* Rich Detailed Trip Plan Section */}
+            <div className="space-y-3">
+              <div className="text-sm font-medium text-slate-700 space-y-2">
+                <label className="block text-[11px] font-bold tracking-wider text-slate-400 uppercase">Share Your Travel Intentions *</label>
+                <p className="text-slate-600 font-normal text-sm">
+                  To help Thrill Quest plan the perfect trip for you, please share the following details:
+                </p>
+                <ul className="list-disc pl-5 text-slate-500 text-xs space-y-1 font-normal grid grid-cols-1 sm:grid-cols-2 gap-x-4">
+                  <li>Destination preference</li>
+                  <li>Travel dates</li>
+                  <li>Number of travelers</li>
+                  <li>Departure City</li>
+                  <li>Budget range</li>
+                  <li>Preferred hotel category</li>
+                  <li>Flight preference (if needed)</li>
+                  <li>Activities or experiences you would like</li>
+                  <li className="sm:col-span-2">Any special requirements or requests</li>
+                </ul>
+                <p className="text-slate-600 font-normal text-xs pt-1">
+                  Once we have these details, we’ll prepare the best travel options for you! ✈️🌍
+                </p>
+              </div>
               <textarea 
-                name="dreamTrip" rows="4" placeholder="Please write at least 20 words detailing your expected route, specific points of interest, or overall budget choices..."
+                name="dreamTrip" rows="6" placeholder="Tell us your choices..."
                 value={formData.dreamTrip} onChange={handleInputChange}
                 className={`w-full bg-slate-50 border ${errors.dreamTrip ? "border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-500" : "border-slate-200/80 focus:border-[#7fa0a0]"} rounded-2xl px-5 py-3.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white transition-all resize-none`}
               />
