@@ -94,6 +94,14 @@ const Navbar = () => {
                         International Tour
                       </NavLink>
                     </li>
+                    
+                    {/* ✨ ADDED BLOG LINK HERE ✨ */}
+                    <li>
+                      <NavLink to="/blog" className={navLinkClass}>
+                        Blog
+                      </NavLink>
+                    </li>
+
                     <li>
                       <NavLink to="/contact" className={navLinkClass}>
                         Contact Us
