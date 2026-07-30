@@ -338,6 +338,7 @@ const Contact = () => {
       </section>
 
       {/* 4. FULL WIDTH GEOGRAPHIC MAP COMPONENT */}
+      {/*
       <section className="w-full px-6 pb-16 max-w-7xl mx-auto">
         <div className="w-full h-96 rounded-[2rem] overflow-hidden shadow-inner border border-slate-200/60 relative">
           <iframe 
@@ -350,7 +351,7 @@ const Contact = () => {
           />
         </div>
       </section>
-
+        */}
     </div>
   );
 };
