@@ -8,8 +8,7 @@ const Contact = () => {
     phone: "+91 ", // Pre-filled to guide the user into the correct format
     destination: "",
     travelDate: "",
-    travelers: 1,
-    dreamTrip: ""
+    travelers: 1
   });
 
   const [errors, setErrors] = useState({});
@@ -50,15 +49,6 @@ const Contact = () => {
         break;
       }
 
-      case "dreamTrip": {
-        // Counts words by splitting on spaces and filtering out empty elements
-        const wordCount = value.trim().split(/\s+/).filter(Boolean).length;
-        if (wordCount < 20) {
-          errorMsg = `Please provide your details with a minimum of 20 words. (Current word count: ${wordCount}/20)`;
-        }
-        break;
-      }
-
       case "destination": {
         if (!value) {
           errorMsg = "Please select a travel destination.";
@@ -88,10 +78,9 @@ const Contact = () => {
     const emailErr = validateField("email", formData.email);
     const phoneErr = validateField("phone", formData.phone);
     const destinationErr = validateField("destination", formData.destination);
-    const tripErr = validateField("dreamTrip", formData.dreamTrip);
 
     // Block submission completely if any rule is broken
-    if (nameErr || emailErr || phoneErr || destinationErr || tripErr) {
+    if (nameErr || emailErr || phoneErr || destinationErr) {
       alert("Please fix the marked invalid fields before submitting.");
       return;
     }
@@ -111,8 +100,7 @@ const Contact = () => {
           "Phone Number": formData.phone,
           "Target Destination": formData.destination,
           "Approx Travel Date": formData.travelDate || "Not Specified",
-          "Number of Travelers": formData.travelers,
-          "Dream Trip Notes": formData.dreamTrip
+          "Number of Travelers": formData.travelers
         })
       });
 
@@ -124,8 +112,7 @@ const Contact = () => {
           phone: "+91 ",
           destination: "",
           travelDate: "",
-          travelers: 1,
-          dreamTrip: ""
+          travelers: 1
         });
         setErrors({});
       } else {
@@ -141,7 +128,7 @@ const Contact = () => {
 
   // Determine if there are active validation errors to safely disable the button
   const hasValidationErrors = Object.values(errors).some((msg) => msg !== "");
-  const isFormEmpty = !formData.fullName || !formData.email || !formData.phone || !formData.destination || !formData.dreamTrip;
+  const isFormEmpty = !formData.fullName || !formData.email || !formData.phone || !formData.destination;
 
   return (
     <div className="bg-white min-h-screen font-sans text-slate-800">
@@ -253,36 +240,6 @@ const Contact = () => {
 
             </div>
 
-            {/* Rich Detailed Trip Plan Section */}
-            <div className="space-y-3">
-              <div className="text-sm font-medium text-slate-700 space-y-2">
-                <label className="block text-[11px] font-bold tracking-wider text-slate-400 uppercase">Share Your Travel Intentions *</label>
-                <p className="text-slate-600 font-normal text-sm">
-                  To help Thrill Quest plan the perfect trip for you, please share the following details:
-                </p>
-                <ul className="list-disc pl-5 text-slate-500 text-xs space-y-1 font-normal grid grid-cols-1 sm:grid-cols-2 gap-x-4">
-                  <li>Destination preference</li>
-                  <li>Travel dates</li>
-                  <li>Number of travelers</li>
-                  <li>Departure City</li>
-                  <li>Budget range</li>
-                  <li>Preferred hotel category</li>
-                  <li>Flight preference (if needed)</li>
-                  <li>Activities or experiences you would like</li>
-                  <li className="sm:col-span-2">Any special requirements or requests</li>
-                </ul>
-                <p className="text-slate-600 font-normal text-xs pt-1">
-                  Once we have these details, we’ll prepare the best travel options for you! ✈️🌍
-                </p>
-              </div>
-              <textarea 
-                name="dreamTrip" rows="6" placeholder="Tell us your choices..."
-                value={formData.dreamTrip} onChange={handleInputChange}
-                className={`w-full bg-slate-50 border ${errors.dreamTrip ? "border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-500" : "border-slate-200/80 focus:border-[#7fa0a0]"} rounded-2xl px-5 py-3.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white transition-all resize-none`}
-              />
-              {errors.dreamTrip && <p className="text-red-500 text-xs font-medium mt-1 pl-1">{errors.dreamTrip}</p>}
-            </div>
-
             {/* Form Submit Button Container */}
             <div className="text-center md:text-left">
               <button 
@@ -351,7 +308,7 @@ const Contact = () => {
           />
         </div>
       </section>
-        */}
+      */}
     </div>
   );
 };
