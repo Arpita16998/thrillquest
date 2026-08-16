@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight, FaMapMarkerAlt, FaCheck, FaTimes } from "react-icons/fa";
 import Bali from "../assets/images/Bali.jpg";
 import Dubai from "../assets/images/Dubai.jpg";
@@ -69,31 +70,39 @@ const internationalDestinations = [
   {
     id: 2,
     name: "Sri Lanka",
-    tagline: "Ancient ruins, emerald tea gardens & wildlife safaris",
-    duration: "6 Days · 5 Nights",
-    price: "36,500",
+    tagline: "The Ultimate Hills, Hikes & Surf Route - Srilanka",
+    duration: "7 Days · 6 Nights",
+    price: "49,300",
     description: "Sri Lanka is an island nation packed with diverse landscapes ranging from rainforests and arid plains to highlands and sandy beaches. It boasts a rich 3,000-year history told through majestic ancient rock citadels, sprawling colonial tea plantations, and wild sanctuaries teeming with elephants.",
     image: Srilanka,
     highlights: [
-      "Sigiriya Rock Fortress ancient plateau climb",
-      "Scenic Ella alpine mountain train route ride",
-      "Yala National Park wild leopard safari",
-      "Mirissa gold beach whale watching excursion"
+      "Bahirawakanda Buddha,Evening Dalada Maligawa ",
+      "Scenic Hill Country Train Ride, Chill Cafe Culture",
+      "Nine Arch Bridge, Little Adam's Peak Hike",
+      "Diyaluma Falls, Weligama Beach Sunset Surf",
+      "Blue Whale Watching or Mirissa Beach day trip",
+      "Galle Fort Walk, Galle Face Green Promenade",
+      "Lotus Tower, Pettah Market, Departure"
     ],
     itinerary: [
-      { day: "01", title: "Day 1 – Arrive in Colombo & transfer to Sigiriya" },
-      { day: "02", title: "Day 2 – Explore Sigiriya Rock & Dambulla Golden Temple" },
-      { day: "03", title: "Day 3 – Drive to Kandy hill station & Tooth Relic Temple" },
-      { day: "04", title: "Day 4 – Panoramic train ride to Ella Nine Arch Bridge" },
-      { day: "05", title: "Day 5 – Yala wildlife safari & beach resort check-in" },
-      { day: "06", title: "Day 6 – Colombo heritage tour & final departure" }
+      { day: "01", title: "Day 1 – Airport to Kandy - Bahirawakanda Buddha, Evening Dalada Maligawac ~3.5 hours" },
+      { day: "02", title: "Day 2 – Kandy to Ella Scenic Hill Country Train Ride, Chill Cafe Culture ~3.5 hours (Train)" },
+      { day: "03", title: "Day 3 – Ella Nine Arch Bridge, Little Adam's Peak Hike Local only" },
+      { day: "04", title: "Day 4 – Ella to Weligama Diyaluma Falls, Weligama Beach Sunset Surf ~3 hours" },
+      { day: "05", title: "Day 5 – Weligama Blue Whale Watching or Mirissa Beach day trip Local only" },
+      { day: "06", title: "Day 6 – Weligama to Colombo Galle Fort Walk, Galle Face Green Promenade ~2.5 hours" },
+      { day: "07", title: "Day 7 – Colombo to Airport Lotus Tower, Pettah Market, Departure ~45 mins" }
     ],
     included: [
-      "All state preserve entry and national park permits",
-      "Boutique eco-lodges & cultural heritage hotel stays",
-      "Daily international breakfast & dinner buffets",
-      "Dedicated private air-conditioned vehicle",
-      "English-certified tourist driver companion"
+      "Comfortable hotels with breakfast",
+      "Private transportation",
+      "English-speaking guide/driver",
+    ],
+    excluded: [
+      "Flight fares",
+      "Entry ticket & activity charges",
+      "Lunch & dinner",
+      "personal expenses & other items of personal nature"
     ]
   },
   {
@@ -162,6 +171,22 @@ const internationalDestinations = [
 const International_Tour = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedTourDetails, setSelectedTourDetails] = useState(null);
+  const [searchParams] = useSearchParams();
+
+  // Parse URL query parameter on page load
+  useEffect(() => {
+    const destinationParam = searchParams.get("destination");
+    if (destinationParam) {
+      const matchedIndex = internationalDestinations.findIndex(
+        (dest) => dest.name.toLowerCase() === destinationParam.toLowerCase()
+      );
+
+      if (matchedIndex !== -1) {
+        setActiveIndex(matchedIndex);
+        setSelectedTourDetails(internationalDestinations[matchedIndex]);
+      }
+    }
+  }, [searchParams]);
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % internationalDestinations.length);
@@ -283,42 +308,42 @@ const International_Tour = () => {
 
       {/* SPLIT SCREEN OVERVIEW ITINERARY SHEET MODAL LAYER */}
       {selectedTourDetails && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-0 md:p-6 transition-all duration-300 animate-fadeIn">
-          <div className="bg-white text-slate-900 w-full max-w-5xl h-full md:h-[92vh] rounded-none md:rounded-[2rem] shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 relative">
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 transition-all duration-300 animate-fadeIn">
+          <div className="bg-white text-slate-900 w-full max-w-5xl h-full md:h-[92vh] rounded-2xl md:rounded-[2rem] shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 relative">
             
             {/* Left Side: Visual Image Banner */}
-            <div className="md:col-span-6 relative h-64 md:h-full w-full">
+            <div className="md:col-span-6 relative h-72 sm:h-80 md:h-full w-full flex flex-col justify-between p-6 md:p-8 overflow-hidden">
               <img 
                 src={selectedTourDetails.image} 
                 alt={selectedTourDetails.name} 
-                className="w-full h-full object-cover" 
+                className="absolute inset-0 w-full h-full object-cover" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 z-0"></div>
               
               {/* Back Close Button Ring */}
               <button 
                 onClick={() => setSelectedTourDetails(null)}
-                className="absolute top-6 left-6 w-11 h-11 rounded-full bg-white/90 hover:bg-white text-slate-900 shadow-md flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-10"
+                className="relative z-10 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-slate-900 shadow-md flex items-center justify-center transition-all hover:scale-105 active:scale-95"
               >
                 <FaTimes size={16} />
               </button>
 
               {/* Bottom Baseline Description Metadata */}
-              <div className="absolute bottom-8 left-8 right-8 text-white space-y-1">
-                <span className="text-[11px] text-gray-300 font-bold uppercase tracking-widest flex items-center gap-1.5 opacity-90">
-                  <FaMapMarkerAlt className="text-teal-400" /> DESTINATION
+              <div className="relative z-10 text-white space-y-1.5 mt-auto">
+                <span className="text-[11px] text-teal-400 font-bold uppercase tracking-widest flex items-center gap-1.5">
+                  <FaMapMarkerAlt /> DESTINATION
                 </span>
-                <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-none">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
                   {selectedTourDetails.name} Getaways
                 </h2>
-                <p className="text-sm text-gray-200 font-normal pt-1 drop-shadow-sm">
+                <p className="text-xs sm:text-sm text-gray-200 font-normal leading-snug drop-shadow-sm">
                   {selectedTourDetails.tagline}
                 </p>
               </div>
             </div>
 
             {/* Right Side: Scrollable Technical Content Area */}
-            <div className="md:col-span-6 h-[calc(100vh-16rem)] md:h-full overflow-y-auto p-6 md:p-10 space-y-8 scrollbar-thin relative bg-white">
+            <div className="md:col-span-6 h-[calc(100vh-19rem)] md:h-full overflow-y-auto p-6 md:p-10 space-y-8 scrollbar-thin relative bg-white">
               
               {/* Top Meta Pricing Row */}
               <div className="flex items-start justify-between border-b border-slate-100 pb-5">
@@ -365,18 +390,42 @@ const International_Tour = () => {
                 </div>
               </div>
 
-              {/* Section 3: Package Inclusions Checklist */}
-              <div className="space-y-4 pt-2">
-                <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-400">WHAT'S INCLUDED</h4>
-                <div className="grid grid-cols-1 gap-3">
-                  {selectedTourDetails.included.map((inc, index) => (
-                    <div key={index} className="flex items-start gap-3 text-[14px] text-slate-700 leading-none">
-                      <FaCheck className="text-teal-600 text-xs mt-0.5 flex-shrink-0" />
-                      <span className="font-normal">{inc}</span>
+              {/* Section 3: Package Inclusions & Exclusions Checklist */}
+                    <div className="space-y-6 pt-2">
+
+                      {/* WHAT'S INCLUDED */}
+                      <div className="space-y-4">
+                        <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                          WHAT'S INCLUDED
+                        </h4>
+                        <div className="grid grid-cols-1 gap-3">
+                          {selectedTourDetails.included?.map((inc, index) => (
+                            <div key={index} className="flex items-start gap-3 text-[14px] text-slate-700 leading-none">
+                              <FaCheck className="text-teal-600 text-xs mt-0.5 flex-shrink-0" />
+                              <span className="font-normal">{inc}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* WHAT'S EXCLUDED */}
+                      {selectedTourDetails.excluded && selectedTourDetails.excluded.length > 0 && (
+                        <div className="space-y-4 pt-2">
+                          <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                            WHAT'S EXCLUDED
+                          </h4>
+                          <div className="grid grid-cols-1 gap-3">
+                            {selectedTourDetails.excluded.map((exc, index) => (
+                              <div key={index} className="flex items-start gap-3 text-[14px] text-slate-700 leading-none">
+                                <FaTimes className="text-rose-500 text-xs mt-0.5 flex-shrink-0" />
+                                <span className="font-normal">{exc}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                     </div>
-                  ))}
-                </div>
-              </div>
 
               {/* Section 4: Burnt Orange Inquiry Action Callout Button */}
               <div className="pt-4 pb-2">

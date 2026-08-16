@@ -85,12 +85,12 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/Domestic_Tour" className={navLinkClass}>
+                      <NavLink to="/domestic-tour" className={navLinkClass}>
                         Domestic Tour
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/International_Tour" className={navLinkClass}>
+                      <NavLink to="/international-tour" className={navLinkClass}>
                         International Tour
                       </NavLink>
                     </li>

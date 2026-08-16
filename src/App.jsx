@@ -23,8 +23,8 @@ const App = () => {
             <Route path="places" element={<PlacesRoute />} />
             <Route path="*" element={<NoPage />} />
             <Route path="service" element={<Service />} />
-            <Route path="Domestic_tour" element={<Domestic_Tour />} />
-            <Route path="International_tour" element={<International_Tour />} />
+            <Route path="domestic-tour" element={<Domestic_Tour />} />
+            <Route path="international-tour" element={<International_Tour />} />
           </Route>
         </Routes>
       </BrowserRouter>

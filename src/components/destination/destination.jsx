@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { HiMapPin, HiArrowRight, HiArrowUp } from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
+import { HiArrowRight, HiArrowUp } from "react-icons/hi2";
 
-// 📸 EXACT IMAGE IMPORTS MAPPED TO YOUR LOWERCASE STRUCTURE
+// EXACT IMAGE IMPORTS MAPPED TO YOUR LOWERCASE STRUCTURE
 import SrilankaImg from "../../assets/images/Srilanka-destination.jpeg";
 import ThailandImg from "../../assets/images/Thailand-destination.jpeg";
 import VietnamImg from "../../assets/images/Vietnam-destination.jpeg";
@@ -9,16 +10,15 @@ import DubaiImg from "../../assets/images/Dubai.jpg";
 import BaliImg from "../../assets/images/Bali-destination.jpeg";
 
 const Destination = () => {
-  // State to track whether the user has toggled the view expansion
   const [showAll, setShowAll] = useState(false);
+  const navigate = useNavigate();
 
-  // Clean data array (separated price from individual metadata layout lines)
+  // Added 'query' field matching exact names in International_Tour.jsx
   const destinations = [
     {
       id: 1,
       country: "Sri Lanka",
-      city: "Kandy, Bentota, Colombo",
-      price: "₹ 35,000/-",
+      query: "Sri Lanka",
       badge: "Bestseller",
       badgeBg: "bg-[#0284c7]",
       image: SrilankaImg 
@@ -26,8 +26,7 @@ const Destination = () => {
     {
       id: 2,
       country: "Vietnam",
-      city: "Hanoi, Da Nang, Ho Chi Minh City",
-      price: "₹30,000/-",
+      query: "Vietnam",
       badge: "Trending",
       badgeBg: "bg-[#f43f5e]",
       image: VietnamImg 
@@ -35,8 +34,7 @@ const Destination = () => {
     {
       id: 3,
       country: "Thailand",
-      city: "Phuket, Krabi",
-      price: "₹ 30,000/-",
+      query: "Thailand",
       badge: "Popular",
       badgeBg: "bg-[#0d9488]",
       image: ThailandImg 
@@ -44,8 +42,7 @@ const Destination = () => {
     {
       id: 4,
       country: "Bali, Indonesia",
-      city: "Kuta, Ubud",
-      price: "₹ 30,000/-",
+      query: "Bali",
       badge: "Trending",
       badgeBg: "bg-[#0284c7]",
       image: BaliImg 
@@ -53,15 +50,19 @@ const Destination = () => {
     {
       id: 5,
       country: "UAE",
-      city: "Dubai, Abu Dhabi",
-      price: "₹ 45,000/-",
+      query: "Dubai",
       badge: "Popular",
       badgeBg: "bg-[#0284c7]",
       image: DubaiImg 
     }
   ];
 
-  // Slice array dynamically: displays first 4 items initially, or all items on click
+  const handleCardClick = (destinationQuery) => {
+    // Navigate to international tour route with query parameter
+    // Update "/international-tour" if your App.jsx path is named differently
+    navigate(`/international-tour?destination=${encodeURIComponent(destinationQuery)}`);
+  };
+
   const visibleDestinations = showAll ? destinations : destinations.slice(0, 4);
 
   return (
@@ -91,57 +92,34 @@ const Destination = () => {
         </button>
       </div>
 
-      {/* 
-        Responsive Layout Grid Track System:
-        Using a clean grid model layout ensures that items appearing after Bali (like UAE) 
-        wrap gracefully into a brand new row right beneath the first group of elements.
-      */}
+      {/* Responsive Layout Grid Track System */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-300">
         {visibleDestinations.map((item) => (
           <div
             key={item.id}
+            onClick={() => handleCardClick(item.query)}
             className="w-full h-[380px] rounded-2xl overflow-hidden relative shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
           >
             <img 
               src={item.image} 
-              alt={`${item.city}, ${item.country}`}
+              alt={item.country}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
 
+            {/* Top Badge */}
             <div className="absolute top-4 left-4 z-10">
               <span className={`px-3 py-1 rounded-full text-[11px] font-bold text-white tracking-wide shadow-sm ${item.badgeBg}`}>
                 {item.badge}
               </span>
             </div>
 
-            <div className="absolute bottom-0 left-0 w-full p-5 flex items-end justify-between text-white z-10 gap-2">
-              
-              {/* Left Side: Destination Identifiers */}
-              <div className="flex flex-col min-w-0">
-                <h3 className="text-xl font-bold tracking-tight leading-tight truncate">
-                  {item.country}
-                </h3>
-                {/* Clean inline location icon rendering ahead of the text string */}
-                <div className="flex items-start gap-1 text-white/80 text-xs font-normal mt-1">
-                  <HiMapPin size={14} className="mt-0.5 shrink-0 text-white/90" />
-                  <span className="leading-tight break-words">{item.city}</span>
-                </div>
-              </div>
-
-              {/* Right Side: Re-engineered Pricing Metrics Layer */}
-              <div className="text-right flex flex-col items-end shrink-0 whitespace-nowrap">
-                {/* Removed 'font-extrabold' and 'From' tracking layers */}
-                <span className="text-lg font-normal text-white">
-                  {item.price}
-                </span>
-                {/* Locked text element configuration safely to a single row strip */}
-                <span className="text-xs font-normal text-white/80 tracking-wide mt-0.5">
-                  Per Person
-                </span>
-              </div>
-
+            {/* Bottom Card Title */}
+            <div className="absolute bottom-0 left-0 w-full p-5 z-10">
+              <h3 className="text-xl font-bold tracking-tight text-white leading-tight">
+                {item.country}
+              </h3>
             </div>
 
           </div>
