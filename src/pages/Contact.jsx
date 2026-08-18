@@ -305,7 +305,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Email Direct</p>
-                    <p className="text-xs sm:text-sm font-bold text-slate-900">inquiries@thrillquest.com</p>
+                    <p className="text-xs sm:text-sm font-bold text-slate-900">inquiries@mythrillquest.com</p>
                   </div>
                 </div>
 
