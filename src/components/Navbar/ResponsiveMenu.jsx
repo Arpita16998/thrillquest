@@ -15,9 +15,13 @@ const navbarLinks = [
     name: "Contact",
     link: "/contact",
   },
+    {
+    name: "Blog",
+    link: "/blog",
+  },
   {
-    name: "India Tour",
-    link: "/India_tour",
+    name: "Domestic Tour",
+    link: "/Domestic_tour",
   },
   {
     name: "International Tour",

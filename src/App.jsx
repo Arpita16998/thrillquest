@@ -9,6 +9,7 @@ import NoPage from "./pages/Nopage";
 import Service from "./pages/Service";
 import Domestic_Tour from "./pages/Domestic_Tour";
 import International_Tour from "./pages/International_Tour";
+import Blog from "./pages/Blog"; // Import the Blog component
 // Make sure the path matches your folder structure exactly!
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="places" element={<PlacesRoute />} />
             <Route path="*" element={<NoPage />} />
             <Route path="service" element={<Service />} />
+            <Route path="blog" element={<Blog />} /> 
             <Route path="domestic-tour" element={<Domestic_Tour />} />
             <Route path="international-tour" element={<International_Tour />} />
           </Route>
